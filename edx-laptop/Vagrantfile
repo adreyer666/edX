@@ -1,0 +1,22 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+ENV['VAGRANT_DEFAULT_PROVIDER'] = 'libvirt'
+
+Vagrant.configure("2") do |config|
+  config.vm.box = "debian/testing64"
+  config.vm.hostname = "edX-laptop"
+  config.vm.network :private_network, :ip => "192.168.121.15"
+  #config.vm.synced_folder ".", "/vagrant", type: "nfs"
+  #config.vm.synced_folder "../edx-workspace", "/home/user/workspace", type: "nfs"
+
+  config.vm.provider :libvirt do |libvirt|
+     libvirt.memory = 2048
+     libvirt.cpus = 2
+  end
+
+  config.vm.provision "shell", inline: <<-SHELL
+    /vagrant/install.sh
+  SHELL
+end
+

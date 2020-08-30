@@ -1,0 +1,48 @@
+#!/bin/sh -f
+
+## change screen resolution
+xrandr -s 1600x900
+
+VCONF="/vagrant/conf"
+SDIR="/usr/share/glib-2.0/schemas/"
+test -d ${VCONF} || exit
+
+## check if already installed
+isInstalled=`gsettings get org.edx.edx-laptop installed 2>/dev/null`
+installed_version=`gsettings get org.edx.edx-laptop install-version 2>/dev/null | tr -d "'"`
+test "${isInstalled}" = "true" && test "${installed_version}" = "%INSTALL_VERSION%" && exit
+
+## install schema
+test -d ${SDIR} || sudo mkdir -p ${SDIR}
+test \! -f ${SDIR}/org.edx.edx-laptop.gschema.xml \
+  && sudo cp -v ${VCONF}/org.edx.edx-laptop.gschema.xml ${SDIR} \
+  && sudo glib-compile-schemas ${SDIR}
+
+## set variables
+gsettings set org.edx.edx-laptop version %VERSION%
+gsettings set org.edx.edx-laptop install-version %INSTALL_VERSION%
+gsettings set org.edx.edx-laptop anaconda-version %ANACONDA_VERSION%
+
+## change system theme
+gsettings set org.gnome.desktop.interface gtk-theme BlackMATE
+gsettings set org.mate.interface gtk-theme BlackMATE
+gsettings set org.mate.Marco.general theme BlackMATE
+dconf write /org/gnome/desktop/interface/gtk-theme "'BlackMATE'"
+dconf write /org/mate/desktop/interface/gtk-theme "'BlackMATE'"
+dconf write /org/mate/marco/general/theme "'BlackMATE'"
+dconf write /org/mate/terminal/profiles/default/background-color "'#FFFFDD'"
+dconf write /org/mate/terminal/profiles/default/foreground-color "'#000000'"
+dconf write /org/mate/terminal/profiles/default/use-system-font false
+dconf write /org/mate/terminal/profiles/default/font "'Monospace 11'"
+
+## add menus
+mkdir -p ${HOME}/.config/autostart ${HOME}/.config/menus/
+dex -v -e MATE -t ${HOME}/.config/autostart/ -c ${HOME}/.xsetup
+dex -v -e MATE -t ${HOME}/.config/autostart/ -c ${HOME}/anaconda3/bin/anaconda-navigator
+dex -v -e MATE -t ${HOME}/.local/share/applications/ -c ${HOME}/anaconda3/bin/anaconda-navigator
+dex -v -e MATE -t ${HOME}/.local/share/applications/ -c ${HOME}/anaconda3/bin/spyder
+
+## notify completion
+gsettings set org.edx.edx-laptop installed true 
+xterm -e "echo 'Installation/customization complete. Confirm to reboot.'; read x; sudo reboot"
+

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist gettext-domain="gsettings-desktop-schemas">
+  <schema id="org.edx.edx-laptop" path="/org/edx/edx-laptop/">
+    <key name="installed" type="b">
+      <default>false</default>
+      <summary>edX installation complete</summary>
+      <description>Whether the edX setup is completed.</description>
+    </key>
+    <key name="version" type="s">
+      <default l10n="messages">'VERSION'</default>
+      <summary>edX build version</summary>
+      <description>Internal edX laptop build versioning..</description>
+    </key>
+    <key name="install-version" type="s">
+      <default l10n="messages">'INSTALL_VERSION'</default>
+      <summary>Installation Version</summary>
+      <description>Internal edX virtual machine installation version.</description>
+    </key>
+    <key name="anaconda-version" type="s">
+      <default l10n="messages">'ANACONDA_VERSION'</default>
+      <summary>Anaconda Version</summary>
+      <description>Internal edX anaconda version.</description>
+    </key>
+  </schema>
+</schemalist>
