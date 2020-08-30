@@ -44,5 +44,6 @@ dex -v -e MATE -t ${HOME}/.local/share/applications/ -c ${HOME}/anaconda3/bin/sp
 
 ## notify completion
 gsettings set org.edx.edx-laptop installed true 
-xterm -e "echo 'Installation/customization complete. Confirm to reboot.'; read x; sudo reboot"
+xterm -e "echo 'Installation/customization complete. Please logout and back in.'; read x"
+mate-session-save --logout-dialog
 

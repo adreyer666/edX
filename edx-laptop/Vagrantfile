@@ -8,10 +8,10 @@ Vagrant.configure("2") do |config|
   config.vm.hostname = "edX-laptop"
   config.vm.network :private_network, :ip => "192.168.121.15"
   #config.vm.synced_folder ".", "/vagrant", type: "nfs"
-  #config.vm.synced_folder "../edx-workspace", "/home/user/workspace", type: "nfs"
+  config.vm.synced_folder "../edx-workspace", "/data/workspace", type: "nfs", nfs_version: 4, nfs_udp: false
 
   config.vm.provider :libvirt do |libvirt|
-     libvirt.memory = 2048
+     libvirt.memory = 4096
      libvirt.cpus = 2
   end
 

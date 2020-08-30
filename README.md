@@ -32,6 +32,10 @@ If you are using a different virtualisation platform you might be able to tweak 
 3. `virt-viewer edx-laptop_default`
    - login:  `user`
    - password: `pass`
+4. Pause/Resume:
+   - If you want to pause the virtual environment: `make pause`
+   - To resume run: `make run`
+
 * Make sure you use the `workspace` directory for any work that you want preserved.
   Changes in the `workspace` will be saved on the host system, so should survive a virtual system rebuild (`make clean; make`).
 
