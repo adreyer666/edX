@@ -63,8 +63,11 @@ mkdir -p /data/workspace
 ln -s /data/workspace ${ENV_HOME}/workspace
 
 test -x ${VHOME}/install-dev.sh && ${VHOME}/install-dev.sh
+test -x ${VHOME}/install-cloud-infra.sh && ${VHOME}/install-cloud-infra.sh
 test -x ${VHOME}/install-container.sh && ${VHOME}/install-container.sh
 test -x ${VHOME}/install-kubernetes.sh && ${VHOME}/install-kubernetes.sh
+
+test -d ${VCONF}/web && cp -av ${VCONF}/web ${ENV_HOME}/Desktop/
 
 exit 0
 
