@@ -58,6 +58,12 @@ The installation is based on [DevStack](https://docs.openstack.org/devstack/late
    - If you want to pause the virtual environment: `make pause`
    - To resume run: `make run`
 
+### (Web-)UI
+* Horizon should be available at `http://<ip>/dashboard`
+* Keystone should be serving at `http://<ip>/identity/`
+- default users are: `admin` and `demo`
+- default password: `secret`
+
 ---
 
 
