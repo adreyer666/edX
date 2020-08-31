@@ -3,7 +3,7 @@ Virtual environment for course studies on edx.org .
 
 *[edX](https://www.edx.org/)* is an open online course provider created by Harvard and MIT. It hosts online university-level courses in a wide range of disciplines to a worldwide student body, including some courses at no charge. It also conducts research into learning based on how people use its platform. edX is a nonprofit organization and runs on the free Open edX open-source software platform.
 
-## edx-laptop
+## Instance: edx-laptop
 This virtual environment was developed to be used while following:
 * [MITx: 6.00.1x - Introduction to Computer Science and Programming Using Python](https://courses.edx.org/courses/course-v1:MITx+6.00.1x+2T2020a/)
 
@@ -38,4 +38,26 @@ If you are using a different virtualisation platform you might be able to tweak 
 
 * Make sure you use the `workspace` directory for any work that you want preserved.
   Changes in the `workspace` will be saved on the host system, so should survive a virtual system rebuild (`make clean; make`).
+
+
+## Data: edx-workspace
+This directory serves as persistent storage for the edx-laptop instance.
+
+---
+
+## Instance: openstack
+This virtual machine environment is for [LFS151.x (Introduction to Cloud Infrastructure Technologies)](https://courses.edx.org/courses/course-v1:LinuxFoundationX+LFS151.x+2T2020/course/), Course Chapter 2. - Infrastructure as a Service (IaaS) OpenStack Demo: Deploying an Instance with OpenStack.
+
+The installation is based on [DevStack](https://docs.openstack.org/devstack/latest/).
+
+### Installation
+1. `git clone` this repo
+2. `cd openstack; make`
+3. `ssh openstack`
+4. Pause/Resume:
+   - If you want to pause the virtual environment: `make pause`
+   - To resume run: `make run`
+
+---
+
 
