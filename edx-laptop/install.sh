@@ -67,7 +67,7 @@ test -x ${VHOME}/install-cloud-infra.sh && ${VHOME}/install-cloud-infra.sh
 test -x ${VHOME}/install-container.sh && ${VHOME}/install-container.sh
 test -x ${VHOME}/install-kubernetes.sh && ${VHOME}/install-kubernetes.sh
 
-test -d ${VCONF}/web && cp -av ${VCONF}/web ${ENV_HOME}/Desktop/
+test -d ${VCONF}/web && mkdir -p ${ENV_HOME}/Desktop/ && cp -av ${VCONF}/web/ ${ENV_HOME}/Desktop/
 
 exit 0
 
