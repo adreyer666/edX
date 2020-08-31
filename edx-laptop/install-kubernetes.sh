@@ -28,8 +28,8 @@ curl -LOR https://storage.googleapis.com/minikube/releases/latest/minikube_lates
 apt install ./minikube_latest_amd64.deb
 
 ## configure user settings
-su - ${ENV_USER} -c "#minikube config set driver none"
 su - ${ENV_USER} -c "minikube config set driver podman"
+su - ${ENV_USER} -c "minikube config set driver docker"
 su - ${ENV_USER} -c "minikube config set container-runtime cri-o"
 # su - ${ENV_USER} -c "minikube start --alsologtostderr -v=7"
 # su - ${ENV_USER} -c "minikube status"
