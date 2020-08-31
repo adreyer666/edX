@@ -1,16 +1,12 @@
 #!/bin/bash -f
 
-VCONF="/vagrant/conf"
-VERSION="`cat ${VCONF}/../.version`"
-
-ENV_USER="user"
-ENV_HOME="/home/${ENV_USER}"
-
-
 if grep -E 'vmx|svm' /proc/cpuinfo;
     then  echo "CPU has virtualization enabled"
     else  echo "Virtualization not enabled"; exit
 fi
+
+test "${ENV_USER}" = '' && ENV_USER="student"
+test "${ENV_HOME}" = '' && ENV_HOME="/home/${ENV_USER}"
 
 curl -sL https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
 echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" > /etc/apt/sources.list.d/kubernetes.list

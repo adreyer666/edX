@@ -5,7 +5,7 @@ if grep -E 'vmx|svm' /proc/cpuinfo;
     else  echo "Virtualization not enabled"; exit
 fi
 
-ENV_USER="user"
+test "${ENV_USER}" = '' && ENV_USER="student"
 CRIO_VERSION=1.17
 NAME="Debian"
 VERSION_ID="Testing"

@@ -7,9 +7,8 @@ VCONF="/vagrant/conf"
 VERSION="`cat ${VCONF}/../.version`"
 INSTALL_VERSION="${ANACONDA_VERSION}--${VERSION}"
 
-ENV_USER="user"
-ENV_HOME="/home/${ENV_USER}"
-
+test "${ENV_USER}" = '' && ENV_USER="student"
+test "${ENV_HOME}" = '' && ENV_HOME="/home/${ENV_USER}"
 test -f ${ENV_HOME}/.bashrc || exit
 
 echo '## .bash_profile"' > ${ENV_HOME}/.bash_profile

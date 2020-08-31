@@ -1,13 +1,8 @@
 #!/bin/sh -f
 
-ANACONDA_VERSION=2020.07
-ANACONDA_HASH="38ce717758b95b3bd0b1797cc6ccfb76f29a90c25bdfa50ee45f11e583edfdbf"
-
 DEBIAN_FRONTEND=noninteractive; export DEBIAN_FRONTEND
 VHOME="/vagrant"
 VCONF="${VHOME}/conf"
-VERSION="`cat ${VCONF}/../.version`"
-INSTALL_VERSION="${ANACONDA_VERSION}--${VERSION}"
 
 apt-get update -q
 apt-get upgrade -q -y
@@ -44,12 +39,10 @@ apt-get clean && rm -rf /tmp/* /var/lib/apt/lists/* /var/cache/apt/archives/part
 
 #------------------#
 
-#cp -v ${VCONF}/org.edx.edx-laptop.gschema.xml /usr/share/glib-2.0/schemas/
-#glib-compile-schemas /usr/share/glib-2.0/schemas/
-
-ENV_USER="user"
-ENV_PASS="pass"
+ENV_USER="student"
+ENV_PASS="study!"
 ENV_HOME="/home/${ENV_USER}"
+export ENV_USER ENV_HOME
 if id ${ENV_USER};
     then echo
     else

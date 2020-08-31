@@ -1,10 +1,11 @@
 #!/bin/bash -f
 
-ENV_USER="user"
 if grep -E 'vmx|svm' /proc/cpuinfo;
     then  echo "CPU has virtualization enabled"
     else  echo "Virtualization not enabled"; exit
 fi
+
+test "${ENV_USER}" = '' && ENV_USER="student"
 
 apt install -y \
 	ssvnc \
