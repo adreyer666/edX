@@ -25,14 +25,17 @@ gsettings set org.edx.edx-laptop anaconda-version %ANACONDA_VERSION%
 
 ## change system theme
 gsettings set org.gnome.desktop.interface gtk-theme BlackMATE
-gsettings set org.mate.interface gtk-theme BlackMATE
 gsettings set org.mate.Marco.general theme BlackMATE
+gsettings set org.mate.interface gtk-theme BlackMATE
+gsettings set org.mate.interface monospace-font-name 'Monospace 11'
+
 dconf write /org/gnome/desktop/interface/gtk-theme "'BlackMATE'"
-dconf write /org/mate/desktop/interface/gtk-theme "'BlackMATE'"
 dconf write /org/mate/marco/general/theme "'BlackMATE'"
+dconf write /org/mate/desktop/interface/gtk-theme "'BlackMATE'"
+dconf write /org/mate/desktop/interface/monospace-font-name "'Monospace 11'"
 dconf write /org/mate/terminal/profiles/default/background-color "'#FFFFDD'"
 dconf write /org/mate/terminal/profiles/default/foreground-color "'#000000'"
-dconf write /org/mate/terminal/profiles/default/use-system-font false
+dconf write /org/mate/terminal/profiles/default/use-system-font true
 dconf write /org/mate/terminal/profiles/default/font "'Monospace 11'"
 
 ## add menus
