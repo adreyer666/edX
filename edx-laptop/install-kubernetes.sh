@@ -20,7 +20,7 @@ kubectl version --client
 
 MINIKUBE_VER=1.12.3
 cd /var/tmp
-curl -LOR https://storage.googleapis.com/minikube/releases/latest/minikube_latest_amd64.deb
+curl -sLOR https://storage.googleapis.com/minikube/releases/latest/minikube_latest_amd64.deb
 apt install ./minikube_latest_amd64.deb
 
 ## configure user settings

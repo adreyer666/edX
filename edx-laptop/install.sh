@@ -12,7 +12,7 @@ apt-get install -q -y --no-install-recommends \
     procps iproute2 iptables nftables \
     curl ca-certificates psmisc sudo \
     vim-tiny openssh-client gpg gpg-agent lrzip \
-    qemu-guest-agent git jq \
+    qemu-guest-agent spice-vdagent mlocate git jq \
     xauth x11-apps x11-utils xterm libxtst6 libasound2 xdg-utils \
     build-essential fakeroot \
     pandoc fonts-dejavu sshpass \

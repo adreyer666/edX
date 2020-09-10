@@ -6,13 +6,17 @@ ENV['VAGRANT_DEFAULT_PROVIDER'] = 'libvirt'
 Vagrant.configure("2") do |config|
   config.vm.box = "debian/testing64"
   config.vm.hostname = "edX-laptop"
-  config.vm.network :private_network, :ip => "192.168.121.15"
+  config.vm.network "private_network", ip: "192.168.121.15"
   #config.vm.synced_folder ".", "/vagrant", type: "nfs"
   config.vm.synced_folder "../workspace", "/data/workspace", type: "nfs", nfs_version: 4, nfs_udp: false
 
   config.vm.provider :libvirt do |libvirt|
      libvirt.memory = 4096
      libvirt.cpus = 2
+     libvirt.graphics_type = 'spice'
+     libvirt.keymap = 'en-gb'
+     libvirt.channel :type => 'unix', :target_name => 'org.qemu.guest_agent.0', :target_type => 'virtio'
+     libvirt.channel :type => 'spicevmc', :target_name => 'com.redhat.spice.0', :target_type => 'virtio'
   end
 
   config.vm.provision "shell", inline: <<-SHELL

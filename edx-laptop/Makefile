@@ -12,6 +12,8 @@ build:
 	vagrant reload  ## to ensure updated kernels and packages are loaded
 	mkdir -p ~/.ssh/config.d
 	vagrant ssh-config --host $(NAME) >> ~/.ssh/config.d/$(NAME).conf
+
+conn:
 	ssh -X $(NAME)
 
 run:
