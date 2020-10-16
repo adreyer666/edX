@@ -22,7 +22,7 @@ apt-get install -q -y --no-install-recommends \
 # make it a desktop install
 apt-get install -q -y --no-install-recommends \
     plymouth xserver-xorg lightdm desktop-file-utils dex dconf-cli \
-    mate-desktop-environment mate-session-manager mate-control-center mate-terminal mate-themes
+    mate-desktop-environment mate-session-manager mate-control-center mate-terminal mate-themes engrampa
 systemctl set-default graphical.target
 systemctl start graphical.target
 
